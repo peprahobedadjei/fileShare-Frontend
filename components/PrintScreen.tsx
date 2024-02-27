@@ -84,7 +84,7 @@ const PrintScreen: React.FC = () => {
               <span className='text-darkRed'>or</span>
             </p>
             <p className='mx-auto mt-4 w-3/6 text-center text-3xl font-semibold'>
-            Visit : <span className="text-darkGreen">www.bit.ly.com</span> to share files
+            Visit : <span className="text-darkGreen">https://bit.ly/web-upload</span> to share files
             </p>
           </div>
         </div>
