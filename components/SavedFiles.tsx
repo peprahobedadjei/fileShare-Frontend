@@ -73,7 +73,7 @@ function SavedFilesScreen() {
     }
   }, [router]);
 
-  const handleDownloadFile = (fileId) => async () => {
+  const handleDownloadFile = (fileId: any) => async () => {
     // Open a new tab and navigate to the download endpoint
     const popup = window.open(
       `${API_URLS.base}/download_saved_file?phoneNumber=${userData?.outletPhoneNumber}&file_id=${fileId}`,
@@ -88,7 +88,7 @@ function SavedFilesScreen() {
     }, 5000); // Close after 5 seconds (adjust as needed)
   };
 
-  const handleDeleteFile = (fileId) => async () => {
+  const handleDeleteFile = (fileId: string, filename: any) => async () => {
     setIsLoading(true);
     try {
       // Perform delete operation using fileId
@@ -105,7 +105,7 @@ function SavedFilesScreen() {
             setSavedArray(apiResponse.body);
             setModalData({
               title: 'Success',
-              message: `File with ID ${fileId} deleted successfully`,
+              message: `File with ID ${filename} deleted successfully`,
               isSuccess: true,
               isOpen: true,
             });
@@ -230,7 +230,7 @@ function SavedFilesScreen() {
                   <div className='max-h-96 overflow-auto rounded-b-md border-2 border-borderGrey '>
                     {/* Row 1 */}
                     {savedArray.map((data, index) => (
-                      <div className='mb-2 mt-2 flex border-t bg-gray-200 p-2 '>
+                    <div key={data.file_id} className='mb-2 mt-2 flex border-t bg-gray-200 p-2 '>
                         <div className='flex-1 p-2'> {data.filename}</div>
                         <div className='flex-1 p-2'>{data.username}</div>
                         <div className='flex flex-1 items-center justify-center space-x-2'>
@@ -241,7 +241,7 @@ function SavedFilesScreen() {
                             Download
                           </button>
                           <button
-                            onClick={handleDeleteFile(data.file_id)}
+                            onClick={handleDeleteFile(data.file_id,data.filename)}
                             className='inline-block rounded border bg-darkRed p-1 px-8 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none'
                           >
                             Delete

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 
 function ClientFeedbackSuccess() {
@@ -22,12 +23,12 @@ function ClientFeedbackSuccess() {
         for your review
         </h1>
         <div className='mt-4'>
-          <a
+          <Link
           href='/web-upload'
             className='p-2 rounded-lg text-center text-xl font-bold justify-center items-center border-gray-200 bg-darkGreen  text-white shadow-sm focus:border-white'
           >
            Share Files Again
-          </a>
+          </Link>
         </div>
       </div>
     </div>

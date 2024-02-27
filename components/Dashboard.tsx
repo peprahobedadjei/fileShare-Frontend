@@ -95,7 +95,7 @@ function UserDashboard() {
     
   };
 
-  const handleDeleteFile = (fileId) => async () => {
+  const handleDeleteFile = (fileId: string,filename: any) => async () => {
     setIsLoading(true);
     try {
       // Perform delete operation using fileId
@@ -109,7 +109,7 @@ function UserDashboard() {
             setDataArray(apiResponse.body);
             setModalData({
               title: 'Success',
-              message: `File with ID ${fileId} deleted successfully`,
+              message: `File with ID ${filename} deleted successfully`,
               isSuccess: true,
               isOpen: true,
             });
@@ -133,7 +133,7 @@ function UserDashboard() {
     }
   };
 
-  const handleSaveFile = (fileId) => async () => {
+  const handleSaveFile = (fileId: string,filename: any) => async () => {
     setIsLoading(true);
     try {
       // Perform delete operation using fileId
@@ -147,7 +147,7 @@ function UserDashboard() {
             setDataArray(apiResponse.body);
             setModalData({
               title: 'Success',
-              message: `File with ID ${fileId} saved successfully`,
+              message: `File with ID ${filename} saved successfully`,
               isSuccess: true,
               isOpen: true,
             });
@@ -161,7 +161,7 @@ function UserDashboard() {
         setIsLoading(false);
         setModalData({
           title: 'Error',
-          message: `Failed to save file with ID ${fileId}`,
+          message: `Failed to save file with ID ${filename}`,
           isSuccess: false,
           isOpen: true,
         });
@@ -171,7 +171,7 @@ function UserDashboard() {
     }
   };
 
-  const handleDownloadFile = (fileId) => async () => {
+  const handleDownloadFile = (fileId: any) => async () => {
       // Open a new tab and navigate to the download endpoint
       const popup = window.open(`${API_URLS.base}/download?file_id=${fileId}`, '_blank');
   
@@ -301,7 +301,7 @@ function UserDashboard() {
                   <div className='max-h-96 overflow-auto rounded-b-md border-2 border-borderGrey '>
                     {/* Row 1 */}
                     {dataArray.map((data, index) => (
-                      <div className='mb-2 mt-2 flex border-t bg-gray-200 p-2 '>
+                       <div key={data.file_id} className='mb-2 mt-2 flex border-t bg-gray-200 p-2 '>
                         <div className='flex-1 p-2'> {data.filename}</div>
                         <div className='flex-1 p-2'>{data.username}</div>
                         <div className='flex flex-1 items-center justify-center space-x-2'>
@@ -311,13 +311,13 @@ function UserDashboard() {
                             Download
                           </button>
                           <button
-                            onClick={handleSaveFile(data.file_id)}
+                            onClick={handleSaveFile(data.file_id,data.filename)}
                             className='inline-block rounded border bg-darkPurple p-1 px-8 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none'
                           >
                             Save
                           </button>
                           <button
-                            onClick={handleDeleteFile(data.file_id)}
+                            onClick={handleDeleteFile(data.file_id,data.filename)}
                             className='inline-block rounded border bg-darkRed p-1 px-8 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none'
                           >
                             Delete
