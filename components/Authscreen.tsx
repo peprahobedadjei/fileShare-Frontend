@@ -92,7 +92,7 @@ function Authscreen() {
       const otpCode = Math.floor(100000 + Math.random() * 900000);
 
       // Call your backend API to send OTP using fetch
-      const response = await fetch(API_URLS.base + '/send_otp', {
+      const response = await fetch(API_URLS.base +'/send_otp', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

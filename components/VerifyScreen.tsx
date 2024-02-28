@@ -126,9 +126,7 @@ function VerifyScreen() {
       // Use fetch to get the QR code image
       fetch(url)
         .then(async (response) => {
-          if (!response.ok) {
-            throw new Error(`Network response was not ok: ${response.statusText}`);
-          }else if (response.status == 200) {
+          if (response.status == 200) {
             const url = response.url;
             try {
               const apiResponse: ApiResponse = await register(
