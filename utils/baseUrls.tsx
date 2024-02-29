@@ -1,5 +1,6 @@
 const API_URLS = {
-  base: 'http://127.0.0.1:5000', 
+  // base: 'http://127.0.0.1:5000', 
+  base:'https://flask-backend-1skg.onrender.com',
   login: '/login',
   register: '/register',
   upload:'/upload',
