@@ -77,7 +77,7 @@ const PrintScreen: React.FC = () => {
                   loading="lazy"
                 />
 
-            <p className='mx-auto max-w-md px-4 text-center text-2xl font-semibold'>
+            <p className='mx-auto max-w-md px-4 text-center text-2xl font-semibold mt-8'>
               Scan <span className='text-darkGreen'>QR Code</span> with <span className='text-darkPurple'>Google Lens</span> or <span className='text-darkPurple'>Apple Camera</span> to Share files
             </p>
             <p className='mx-auto max-w-md  text-center text-2xl font-semibold'>
